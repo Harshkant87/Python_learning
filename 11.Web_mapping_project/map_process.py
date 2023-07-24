@@ -16,7 +16,8 @@ def color_producer(longitude):
         return 'green'
 
 for i in range(len(names)):
-    fg.add_child(folium.Marker(location = [latitudes[i], longitudes[i]], popup = names[i] + "," + places[i] ,  icon = folium.Icon(color = color_producer(longitudes[i]))))
+    fg.add_child(folium.Marker(location = [latitudes[i], longitudes[i]], popup = names[i] + "," + places[i] ,  icon = folium.Icon(color = color_producer(longitudes[i])), fill_opacity = 0.5))
 
+fg.add_child(folium.GeoJson(data = ( open("world-countries.json", 'r', encoding = 'utf-8-sig').read())))
 map.add_child(fg)
 map.save("national_parks_map.html")
