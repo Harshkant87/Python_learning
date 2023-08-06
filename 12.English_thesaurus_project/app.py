@@ -20,5 +20,13 @@ def translate(word):
     else:
         return "The word does not exist!"
 
-word = input("Enter word: ")
-print(translate(word))
+while(True):
+    message = '''Welcome to my Thesaurus!
+                 Enter the word to know its meaning.
+                 Type exit() to close this program.'''
+    print(message)
+    word = input("Enter word: ")
+    if word == "exit()":
+        break
+    print(translate(word))
+    print("****************************************\n")
