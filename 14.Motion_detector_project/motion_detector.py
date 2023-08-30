@@ -32,6 +32,7 @@ while True:
         (x, y, w, h) = cv2.boundingRect(countour)
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 3)
     status_list.append(status)
+    status_list = status_list[-2:]
 
     if len(status_list) >= 2 and status_list[-1] == 1 and status_list[-2] == 0:
         time_list.append(datetime.now())
@@ -56,6 +57,6 @@ while True:
 for i in range(0, len(time_list), 2):
     df = df.append({"Start": time_list[i], "End": time_list[i + 1]}, ignore_index = True)
 
-df.to_csv("Time_stamps.csv") # you can open this .csv file in excel as well
+df.to_csv(r"C:\python_learning\14.Motion_detector_project\Time_stamps.csv") # you can open this .csv file in excel as well
 video.release()
 cv2.destroyAllWindows()
