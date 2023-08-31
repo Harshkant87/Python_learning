@@ -55,7 +55,7 @@ while True:
 
 # print(time_list)
 for i in range(0, len(time_list), 2):
-    df = df.append({"Start": time_list[i], "End": time_list[i + 1]}, ignore_index = True)
+    df = df._append({"Start": time_list[i], "End": time_list[i + 1]}, ignore_index = True)
 
 df.to_csv(r"C:\python_learning\14.Motion_detector_project\Time_stamps.csv") # you can open this .csv file in excel as well
 video.release()
