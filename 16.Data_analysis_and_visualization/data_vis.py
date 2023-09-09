@@ -1,6 +1,8 @@
 import pandas
+from datetime import datetime
+from pytz import utc
 
-data = pandas.read_csv("course_reviews.csv")
+data = pandas.read_csv("course_reviews.csv", parse_dates=['Timestamp'])
 # print(data)
 
 #1. for first five rows
@@ -36,3 +38,6 @@ print(data[data["Rating"] > 4.5].count())
 
 #10. filtering on the basis of multiple conditions
 print(data[(data['Rating'] > 4.0) & (data['Progress'] > 1.0)])
+
+#11. Time based filtering
+# print(data[ (data['Timestamp'] >= datetime(2020, 7, 1, tzinfo = utc)) & (data['Timestamp'] >= datetime(2021, 7, 1, tzinfo = utc))])
