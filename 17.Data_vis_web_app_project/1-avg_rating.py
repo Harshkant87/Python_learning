@@ -22,20 +22,18 @@ chart_def = '''
         align: 'left'
     },
     xAxis: {
-        categories: ['USA', 'China', 'Brazil', 'EU', 'India', 'Russia'],
-        crosshair: true,
-        accessibility: {
-            description: 'Countries'
+        title: {
+            text: 'Date'
         }
     },
     yAxis: {
         min: 0,
         title: {
-            text: '1000 metric tons (MT)'
+            text: 'Ratings'
         }
     },
     tooltip: {
-        valueSuffix: ' (1000 MT)'
+        valueSuffix: '/5'
     },
     plotOptions: {
         column: {
@@ -55,7 +53,7 @@ chart_def = '''
 def app():
     wp = jp.QuasarPage()
     h1 = jp.QDiv(a = wp, text = "Analysis of course reviews", classes = "text-h3 text-center q-pa-md")
-    p1 = jp.QDiv(a = wp, text = "These graphs represent course review analysis")
+    p1 = jp.QDiv(a = wp, text = "These graphs represent course review analysis", classes = "text-center")
     hc = jp.HighCharts(a = wp, options = chart_def)
 
     # print(hc.options.series)
