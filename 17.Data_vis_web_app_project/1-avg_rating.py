@@ -14,8 +14,8 @@ chart_def = '''
         type: 'column'
     },
     title: {
-        text: 'Corn vs wheat estimated production for 2020',
-        align: 'left'
+        text: 'Day vs rating avg',
+        align: 'center'
     },
     subtitle: {
         text:'Source: <a target = "_blank", href="https://www.indexmundi.com/agriculture/?commodity=corn">indexmundi</a>',
@@ -47,10 +47,6 @@ chart_def = '''
         {
             name: 'Corn',
             data: [406292, 260000, 107000, 68300, 27500, 14500]
-        },
-        {
-            name: 'Wheat',
-            data: [51086, 136000, 5500, 141000, 107180, 77000]
         }
     ]
 }
@@ -63,6 +59,8 @@ def app():
     hc = jp.HighCharts(a = wp, options = chart_def)
 
     # print(hc.options.series)
+    hc.options.series[0].name = 'Avg-day-rating'
+    hc.options.series[0].data = list(zip(day_avg.index, day_avg['Rating']))
 
     return wp
 
