@@ -53,9 +53,6 @@ chart_def = '''
         enabled: false
     },
     plotOptions: {
-        series: {
-            pointStart: 2000
-        },
         areaspline: {
             fillOpacity: 0.5
         }
@@ -123,6 +120,7 @@ def app():
     hc = jp.HighCharts(a = wp, options = chart_def)
     hc.options.xAxis.categories = dates
     # hc.options.series[0].data = list(week_avg['Rating'])
+    # print(progress)
 
     return wp
 
