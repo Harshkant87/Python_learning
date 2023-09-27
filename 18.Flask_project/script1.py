@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+# we can use pythonanywhere to deploy our python code and use python virtual 
+#  env for flask projects
 
 app = Flask(__name__)
 
