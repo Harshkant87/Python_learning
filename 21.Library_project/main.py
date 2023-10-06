@@ -49,5 +49,30 @@ isbn_text = StringVar()
 isbn_entry = Entry(window, textvariable = isbn_text)
 isbn_entry.grid(row = 1, column = 3)
 
+listbox_window = Listbox(window, height = 6, width = 35)
+listbox_window.grid(row = 2, column = 0, rowspan = 6, columnspan = 2)
+
+scrl_bar = Scrollbar(window)
+scrl_bar.grid(row = 2, column = 2, rowspan = 6)
+listbox_window.configure(yscrollcommand = scrl_bar.set)
+scrl_bar.configure(command = listbox_window.yview)
+
+button1 = Button(window, text = "View All", width = 12)
+button1.grid(row = 2, column = 3)
+
+button2 = Button(window, text = "Search Entry", width = 12)
+button2.grid(row = 3, column = 3)
+
+button3 = Button(window, text = "Add Entry", width = 12)
+button3.grid(row = 4, column = 3)
+
+button4 = Button(window, text = "Update", width = 12)
+button4.grid(row = 5, column = 3)
+
+button5 = Button(window, text = "Delete", width = 12)
+button5.grid(row = 6, column = 3)
+
+button6 = Button(window, text = "Close", width = 12)
+button6.grid(row = 7, column = 3)
 
 window.mainloop()
