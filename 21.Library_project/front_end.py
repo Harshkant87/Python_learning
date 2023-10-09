@@ -18,6 +18,23 @@ A user can:
 '''
 
 from tkinter import *
+import back_end
+
+def view_command():
+    listbox_window.delete(0, END)
+    for row in back_end.view():
+        listbox_window.insert(END, row)
+
+def search_command():
+    listbox_window.delete(0, END)
+    for row in back_end.search(title_text.get(), author_text.get(), year_text.get(), isbn_text.get()):
+        listbox_window.insert(END, row)
+
+def add_command():
+    listbox_window.delete(0, END)
+    back_end.insert(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
+    listbox_window.insert(END, (title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
+
 
 window = Tk()
 
@@ -57,13 +74,13 @@ scrl_bar.grid(row = 2, column = 2, rowspan = 6)
 listbox_window.configure(yscrollcommand = scrl_bar.set)
 scrl_bar.configure(command = listbox_window.yview)
 
-button1 = Button(window, text = "View All", width = 12)
+button1 = Button(window, text = "View All", width = 12, command = view_command)
 button1.grid(row = 2, column = 3)
 
-button2 = Button(window, text = "Search Entry", width = 12)
+button2 = Button(window, text = "Search Entry", width = 12, command = search_command)
 button2.grid(row = 3, column = 3)
 
-button3 = Button(window, text = "Add Entry", width = 12)
+button3 = Button(window, text = "Add Entry", width = 12, command = add_command)
 button3.grid(row = 4, column = 3)
 
 button4 = Button(window, text = "Update", width = 12)
