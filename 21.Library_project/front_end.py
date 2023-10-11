@@ -20,6 +20,20 @@ A user can:
 from tkinter import *
 import back_end
 
+def get_selected_row(event):
+    global selected_tuple
+    index = listbox_window.curselection()[0]
+    selected_tuple = listbox_window.get(index)
+    title_entry.delete(0, END)
+    title_entry.insert(END, selected_tuple[1])
+    author_entry.delete(0, END)
+    author_entry.insert(END, selected_tuple[2])
+    year_entry.delete(0, END)
+    year_entry.insert(END, selected_tuple[3])
+    isbn_entry.delete(0, END)
+    isbn_entry.insert(END, selected_tuple[4])
+
+
 def view_command():
     listbox_window.delete(0, END)
     for row in back_end.view():
@@ -35,8 +49,16 @@ def add_command():
     back_end.insert(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
     listbox_window.insert(END, (title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
 
+def delete_command():
+    back_end.delete(selected_tuple[0])
+    view_command()
+
+def update_command():
+    back_end.update(selected_tuple[0], title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
+    view_command()
 
 window = Tk()
+window.wm_title("BookStore")
 
 title_label = Label(window, text = "Title")
 title_label.grid(row = 0, column = 0)
@@ -74,6 +96,8 @@ scrl_bar.grid(row = 2, column = 2, rowspan = 6)
 listbox_window.configure(yscrollcommand = scrl_bar.set)
 scrl_bar.configure(command = listbox_window.yview)
 
+listbox_window.bind('<<ListboxSelect>>', get_selected_row)
+
 button1 = Button(window, text = "View All", width = 12, command = view_command)
 button1.grid(row = 2, column = 3)
 
@@ -83,13 +107,13 @@ button2.grid(row = 3, column = 3)
 button3 = Button(window, text = "Add Entry", width = 12, command = add_command)
 button3.grid(row = 4, column = 3)
 
-button4 = Button(window, text = "Update", width = 12)
+button4 = Button(window, text = "Update", width = 12, command = update_command)
 button4.grid(row = 5, column = 3)
 
-button5 = Button(window, text = "Delete", width = 12)
+button5 = Button(window, text = "Delete", width = 12, command = delete_command)
 button5.grid(row = 6, column = 3)
 
-button6 = Button(window, text = "Close", width = 12)
+button6 = Button(window, text = "Close", width = 12, command = window.destroy)
 button6.grid(row = 7, column = 3)
 
 window.mainloop()
