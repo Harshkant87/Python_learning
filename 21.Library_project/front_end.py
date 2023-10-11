@@ -15,6 +15,10 @@ A user can:
 5) Delete
 6) Close
 
+for making .exe file of this script use the command:
+
+pyinstaller --onefile <file_path.py> 
+
 '''
 
 from tkinter import *
