@@ -20,6 +20,9 @@ class Account:
 
 
 class Checking(Account): #base class passed as argument this is inheritance
+
+    ''' This class generates checking account objects and
+    inherits the account class'''                        #doc_string
     def __init__(self, filepath, fee):
         self.fee = fee
         Account.__init__(self, filepath)
@@ -34,6 +37,7 @@ print(checking.balance)
 checking.transfer(100)
 checking.commit()
 print(checking.balance)
+print(checking.__doc__)
 
 # harsh_account = Account("account//balance.txt")
 # print(harsh_account.balance)
