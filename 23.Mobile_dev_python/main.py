@@ -28,6 +28,7 @@ class SignUpScreen(Screen):
 class SignUpScreenSuccess(Screen):
     def log_in(self):
         self.manager.current = "login_screen"
+        self.manager.transition.direction = "right"
 
 class MainApp(App):
     def build(self):
