@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.animation import Animation
 import json, glob
 from datetime import datetime
 from pathlib import Path
